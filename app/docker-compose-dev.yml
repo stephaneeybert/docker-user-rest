@@ -1,0 +1,71 @@
+version: "3.1"
+services:
+  user-rest:
+    image: localhost:5000/user-rest
+    ports:
+      - "8080:8080"
+    networks:
+      - user-rest
+    volumes:
+      - "~/dev/docker/projects/user-rest/volumes/data:/tmp/user-rest/data"
+      - "~/dev/docker/projects/user-rest/volumes/code/user-rest-0.0.1-SNAPSHOT.jar:/tmp/user-rest/user-rest.jar"
+      - "~/dev/docker/projects/user-rest/volumes/logs:/tmp/user-rest/logs"
+    environment:
+      HOST_USER_ID: ${CURRENT_UID}
+      HOST_GROUP_ID: ${CURRENT_GID}      
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: useraccount
+      DB_USER: useraccount
+    secrets:
+      - DB_ROOT_PASSWORD
+      - USER_REST_DB_PASSWORD
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3 
+        window: 10s
+    healthcheck:
+      test: curl --fail http://localhost:8080/api/ || exit 1
+      interval: 205s
+      timeout: 10s
+      retries: 3  
+  mysql:
+    image: localhost:5000/mariadb:10.1.24
+    networks:
+      - user-rest      
+    volumes:
+      - "~/dev/docker/projects/user-rest/volumes/database/data:/usr/bin/mariadb/install/data"
+      - "~/dev/docker/projects/user-rest/volumes/logs:/usr/bin/mariadb/install/logs"
+    environment:
+      HOST_USER_ID: ${CURRENT_UID}
+      HOST_GROUP_ID: ${CURRENT_GID}      
+    secrets:
+      - DB_ROOT_PASSWORD
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3 
+        window: 10s
+    healthcheck:
+      test: /usr/bin/mariadb/db-health-check.sh
+      interval: 5s
+      timeout: 10s
+      retries: 3      
+  logrotate:
+    image: localhost:5000/logrotate
+    networks:
+      - user-rest      
+    volumes:
+      - "~/dev/docker/projects/user-rest/volumes/logs:/usr/bin/logrotate/logs"
+networks:
+  user-rest:  
+secrets:
+  DB_ROOT_PASSWORD:
+    external: true
+  USER_REST_DB_PASSWORD:
+    external: true
