@@ -1,6 +1,6 @@
 FROM alpine:3.8
 
-RUN apk add --no-cache vim bash openssl wget
+RUN apk add --no-cache vim bash openssl wget curl
 
 RUN apk add --no-cache --virtual build-essential build-base gcc cmake linux-headers libexecinfo-dev gnutls-dev bison
 # autoconf     bash     bison     build-base     bzip2     curl     findutils     git     imagemagick     libbz2     libcurl     libc6-compat     libevent     musl     openjdk7     openjdk7-jre     openssh-client     openssh     postgresql-client     postgresql     python     python-dev     ruby     ruby-dev     socat     stunnel     syslinux     tar     zip
