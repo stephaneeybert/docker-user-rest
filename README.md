@@ -37,7 +37,7 @@ cd ./install
 ./docker-secrets.sh
 ```
 
-- Database
+- Installing the database
 
 Configure the database  
 Create a symlink to the existing learnintouch database data directory
