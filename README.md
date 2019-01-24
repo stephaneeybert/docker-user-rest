@@ -1,19 +1,3 @@
-Starting the application in swarm mode
-```
-docker stack deploy --compose-file docker-compose-dev.yml user-rest
-```
-
-Starting the application in swarm mode in production
-```
-docker stack deploy --compose-file docker-compose.yml luser-rest
-```
-
-Stopping the application  
-```
-docker stack rm user-rest
-```
-
-
 - Installing the application  
   
 Create the volumes directories
