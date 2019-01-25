@@ -29,7 +29,7 @@ services:
         window: 10s
     healthcheck:
       test: curl --fail http://localhost:8080/api/ || exit 1
-      interval: 5s
+      interval: 30s
       timeout: 10s
       retries: 3  
   mysql:
