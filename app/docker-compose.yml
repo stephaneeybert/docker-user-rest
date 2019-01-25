@@ -53,7 +53,7 @@ services:
         window: 10s
     healthcheck:
       test: /usr/bin/mariadb/db-health-check.sh
-      interval: 5s
+      interval: 30s
       timeout: 10s
       retries: 3      
   logrotate:
