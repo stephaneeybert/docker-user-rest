@@ -4,6 +4,7 @@ services:
     image: localhost:5000/user-rest
     ports:
       - "8080:8080"
+      - "8443:8443"
     networks:
       - user-rest
     volumes:
