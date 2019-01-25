@@ -15,7 +15,7 @@ services:
       restart_policy:
         condition: none      
   mysql:
-    image: thalasoft.com:5000/mariadb:10.1.24
+    image: thalasoft.com:5000/mariadb:10.3.7
     environment:
       HOST_USER_ID: ${CURRENT_UID}
       HOST_GROUP_ID: ${CURRENT_GID}
