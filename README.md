@@ -4,7 +4,6 @@ Create the volumes directories
 ```
 volumes/
 ├── code
-├── data
 ├── database
 │   └── data
 └── logs
