@@ -8,7 +8,6 @@ services:
     networks:
       - user-rest
     volumes:
-      - "~/dev/docker/projects/user-rest/volumes/data:/tmp/user-rest/data"
       - "~/dev/docker/projects/user-rest/volumes/code/user-rest-0.0.1-SNAPSHOT.jar:/tmp/user-rest/user-rest.jar"
       - "~/dev/docker/projects/user-rest/volumes/logs:/tmp/user-rest/logs"
     environment:
