@@ -1,29 +1,28 @@
-version: "3.1"
+version: "3.5"
 services:
   user-rest-install:
     image: thalasoft.com:5000/user-rest-install
+    networks:
+      - user-rest
+      - common
+    volumes:
+      - "~/dev/docker/projects/common/volumes/database/data:/usr/bin/mariadb/install/data"      
     environment:
       HOST_USER_ID: ${CURRENT_UID}
       HOST_GROUP_ID: ${CURRENT_GID}
     secrets:
       - DB_ROOT_PASSWORD
       - USER_REST_DB_PASSWORD        
-    volumes:
-      - "~/dev/docker/projects/user-rest/volumes/database/data:/usr/bin/mariadb/install/data"      
     deploy:
       replicas: 1
       restart_policy:
         condition: none      
-  mysql:
-    image: thalasoft.com:5000/mariadb:10.3.7
-    environment:
-      HOST_USER_ID: ${CURRENT_UID}
-      HOST_GROUP_ID: ${CURRENT_GID}
-    secrets:
-      - DB_ROOT_PASSWORD      
-    volumes:
-      - "~/dev/docker/projects/user-rest/volumes/database/data:/usr/bin/mariadb/install/data"
-      - "~/dev/docker/projects/user-rest/volumes/logs:/usr/bin/mariadb/install/logs"
+networks:
+  user-rest:
+    name: user-rest
+  common:
+    external: true
+    name: common
 secrets:
   DB_ROOT_PASSWORD:
     external: true  

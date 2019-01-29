@@ -3,10 +3,7 @@
 Create the volumes directories
 ```
 volumes/
-├── code
-├── database
-│   └── data
-└── logs
+└── code
 ```
 
 Deploy the source code  

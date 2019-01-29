@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.5"
 services:
   user-rest:
     image: thalasoft.com:5000/user-rest
@@ -7,9 +7,10 @@ services:
       - "8443:8443"
     networks:
       - user-rest
+      - common
     volumes:
       - "~/dev/docker/projects/user-rest/volumes/code/user-rest-0.0.1-SNAPSHOT.jar:/tmp/user-rest/user-rest.jar"
-      - "~/dev/docker/projects/user-rest/volumes/logs:/tmp/user-rest/logs"
+      - "~/dev/docker/projects/common/volumes/logs:/tmp/user-rest/logs"
     environment:
       HOST_USER_ID: ${CURRENT_UID}
       HOST_GROUP_ID: ${CURRENT_GID}      
@@ -32,38 +33,12 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3  
-  mysql:
-    image: thalasoft.com:5000/mariadb:10.3.7
-    networks:
-      - user-rest      
-    volumes:
-      - "~/dev/docker/projects/user-rest/volumes/database/data:/usr/bin/mariadb/install/data"
-      - "~/dev/docker/projects/user-rest/volumes/logs:/usr/bin/mariadb/install/logs"
-    environment:
-      HOST_USER_ID: ${CURRENT_UID}
-      HOST_GROUP_ID: ${CURRENT_GID}      
-    secrets:
-      - DB_ROOT_PASSWORD
-    deploy:
-      replicas: 1
-      restart_policy:
-        condition: any
-        delay: 5s
-        max_attempts: 3 
-        window: 10s
-    healthcheck:
-      test: /usr/bin/mariadb/db-health-check.sh
-      interval: 5s
-      timeout: 10s
-      retries: 3      
-  logrotate:
-    image: thalasoft.com:5000/logrotate
-    networks:
-      - user-rest      
-    volumes:
-      - "~/dev/docker/projects/user-rest/volumes/logs:/usr/bin/logrotate/logs"
 networks:
   user-rest:  
+    name: user-rest
+  common:  
+    external: true
+    name: common
 secrets:
   DB_ROOT_PASSWORD:
     external: true
