@@ -27,6 +27,11 @@ Copy the jar file from the `target` directory into the `code` directory
 cp ~/dev/java/projects/user-rest/target/user-rest-0.0.1-SNAPSHOT.jar volumes/code/
 ```
 
+Copy the SSL keystore file into the `code` directory
+```
+cp ~/.ssh/thalasoft.keystore volumes/code/
+```
+
 Create the secrets
 ```
 cd ./install
