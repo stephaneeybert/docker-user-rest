@@ -30,6 +30,7 @@ cp ~/dev/java/projects/user-rest/target/user-rest-0.0.1-SNAPSHOT.jar volumes/cod
 Copy the SSL keystore file into the `code` directory
 ```
 cp ~/.ssh/thalasoft.keystore volumes/code/
+scp volumes/code/thalasoft.keystore stephane@...:/home/stephane/dev/docker/projects/user-rest/volumes/code/
 ```
 
 Create the secrets
