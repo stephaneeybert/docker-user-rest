@@ -1,4 +1,4 @@
-FROM stephaneeybert/alpineos-mariadb:10.3.7
+FROM stephaneeybert/ubuntuos-mariadb:10.3.7
 
 
 # Installing the application
