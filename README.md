@@ -28,7 +28,8 @@ cp ~/dev/java/projects/user-rest/target/user-rest-0.0.1-SNAPSHOT.jar volumes/cod
 scp volumes/code/user-rest-0.0.1-SNAPSHOT.jar stephane@...:/home/stephane/dev/docker/projects/user-rest/volumes/code/
 ```
 
-Copy the SSL keystore file into the `code` directory
+Copy the SSL keystore file into the `code` directory  
+The keystore is accessed on the classpath and the application does not need to be rebuilt
 ```
 cp ~/.ssh/thalasoft.keystore volumes/code/
 scp volumes/code/thalasoft.keystore stephane@...:/home/stephane/dev/docker/projects/user-rest/volumes/code/
