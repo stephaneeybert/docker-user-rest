@@ -1,4 +1,4 @@
-FROM stephaneeybert/ubuntuos-mariadb:10.3.7
+FROM stephaneeybert/ubuntuos-mariadb:10.3.12
 
 
 # Installing the application
