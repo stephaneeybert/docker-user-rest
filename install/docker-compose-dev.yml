@@ -6,7 +6,7 @@ services:
       - user-rest
       - common
     volumes:
-      - "~/dev/docker/projects/common/volumes/database/data:/usr/bin/mariadb/install/data"
+      - "~/dev/docker/projects/common/volumes/database/data:/usr/local/mariadb/install/data"
     environment:
       HOST_USER_ID: ${CURRENT_UID}
       HOST_GROUP_ID: ${CURRENT_GID}

@@ -10,8 +10,8 @@ source /tmp/user-rest/expand-secrets.sh
 # Avoid having to provide the user password on the command line
 export MYSQL_PWD=$DB_ROOT_PASSWORD
 
-/usr/bin/mariadb/install/bin/mysql --protocol=tcp -h mysql -P 3306 -u root -v < /tmp/user-rest/data/mysql/mysql-database.sql
-/usr/bin/mariadb/install/bin/mysql useraccount --protocol=tcp -h mysql -P 3306 -u root -v < /tmp/user-rest/data/mysql/mysql-user.sql
+/usr/local/mariadb/install/bin/mysql --protocol=tcp -h mysql -P 3306 -u root -v < /tmp/user-rest/data/mysql/mysql-database.sql
+/usr/local/mariadb/install/bin/mysql useraccount --protocol=tcp -h mysql -P 3306 -u root -v < /tmp/user-rest/data/mysql/mysql-user.sql
 
-chown -R $HOST_USER_ID /usr/bin/mariadb/install/data
-chgrp -R $HOST_GROUP_ID /usr/bin/mariadb/install/data
+chown -R $HOST_USER_ID /usr/local/mariadb/install/data
+chgrp -R $HOST_GROUP_ID /usr/local/mariadb/install/data
