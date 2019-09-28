@@ -72,3 +72,8 @@ The command should display an Exit 0 state or a Complete value for the container
 docker stack ps user-rest-install
 docker stack rm user-rest-install
 ```
+
+List the certificates of the keystore
+```
+keytool -list -v -storetype pkcs12 -keystore ~/dev/docker/projects/user-rest/volumes/code/thalasoft.keystore
+```
