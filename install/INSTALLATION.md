@@ -40,7 +40,9 @@ Copy the SSL keystore file into the `code` directory
 The keystore is accessed on the classpath and the application does not need to be rebuilt
 ```
 cp ~/.ssh/thalasoft.keystore ~/dev/docker/projects/user-rest/volumes/code/
+cp ~/.ssh/user-rest.keystore ~/dev/docker/projects/user-rest/volumes/code/
 scp ~/.ssh/thalasoft.keystore stephane@thalasoft.com:~/dev/docker/projects/user-rest/volumes/code/
+scp ~/.ssh/user-rest.keystore stephane@thalasoft.com:~/dev/docker/projects/user-rest/volumes/code/
 ```
 
 On the remote
