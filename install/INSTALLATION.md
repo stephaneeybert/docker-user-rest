@@ -78,4 +78,5 @@ docker stack rm user-rest-install
 List the certificates of the keystore
 ```
 keytool -list -v -storetype pkcs12 -keystore ~/dev/docker/projects/user-rest/volumes/code/thalasoft.keystore
+keytool -list -v -storetype pkcs12 -keystore ~/dev/docker/projects/user-rest/volumes/code/user-rest.keystore
 ```
