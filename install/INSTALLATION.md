@@ -18,7 +18,7 @@ mvn clean install
 Copy the jar file
 ```
 cp ~/dev/java/projects/user-rest/target/user-rest-0.0.1-SNAPSHOT.jar ~/dev/docker/projects/user-rest/volumes/code/
-scp ~/dev/docker/projects/user-rest/volumes/code/user-rest-0.0.1-SNAPSHOT.jar stephane@thalasoft.com:~/dev/docker/projects/user-rest/volumes/code/
+scp ~/dev/java/projects/user-rest/target/user-rest-0.0.1-SNAPSHOT.jar stephane@thalasoft.com:~/dev/docker/projects/user-rest/volumes/code/
 ```
 
 Build the images
