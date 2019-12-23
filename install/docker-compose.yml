@@ -1,12 +1,29 @@
-version: "3.5"
+version: "3.7"
 services:
-  user-rest-install:
-    image: thalasoft.com:5000/user-rest-install
+  user-rest-mysql:
+    image: thalasoft.com:5000/user-rest-mysql
     networks:
       - user-rest
       - common
     volumes:
-      - "~/dev/docker/projects/common/volumes/database/data:/usr/local/mariadb/install/data"      
+      - "~/dev/docker/projects/common/volumes/database/mysql/data:/usr/local/mariadb/install/data"      
+    environment:
+      HOST_USER_ID: ${CURRENT_UID}
+      HOST_GROUP_ID: ${CURRENT_GID}
+    secrets:
+      - DB_ROOT_PASSWORD
+      - USER_REST_DB_PASSWORD        
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: none      
+  user-rest-postgresql:
+    image: thalasoft.com:5000/user-rest-postgresql
+    networks:
+      - user-rest
+      - common
+    volumes:
+      - "~/dev/docker/projects/common/volumes/database/postgresql/data:/usr/local/postgresql/install/data"      
     environment:
       HOST_USER_ID: ${CURRENT_UID}
       HOST_GROUP_ID: ${CURRENT_GID}

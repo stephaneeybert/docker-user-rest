@@ -31,9 +31,9 @@ cd ~/dev/docker/projects/user-rest/app;
 
 Copy some files
 ```
+scp ~/dev/docker/projects/user-rest/install/docker-secrets.sh stephane@thalasoft.com:~/dev/docker/projects/user-rest/install
 scp ~/dev/docker/projects/user-rest/install/docker-compose.yml stephane@thalasoft.com:~/dev/docker/projects/user-rest/install
 scp ~/dev/docker/projects/user-rest/app/docker-compose.yml stephane@thalasoft.com:~/dev/docker/projects/user-rest/app
-scp ~/dev/docker/projects/user-rest/install/docker-secrets.sh stephane@thalasoft.com:~/dev/docker/projects/user-rest/install
 ```
 
 Copy the SSL keystore file into the `code` directory  
