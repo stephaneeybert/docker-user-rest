@@ -1,6 +1,6 @@
 docker-secrets.sh
 volumes
-*.sql
+*data.sql
 *.zip
 *.tar
 *.gz
