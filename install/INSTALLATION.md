@@ -36,6 +36,14 @@ scp ~/dev/docker/projects/user-rest/install/docker-compose.yml stephane@thalasof
 scp ~/dev/docker/projects/user-rest/app/docker-compose.yml stephane@thalasoft.com:~/dev/docker/projects/user-rest/app
 ```
 
+Create a docker-secrets.sh file and run it
+```
+cd ~/dev/docker/projects/user-rest/install/
+vi docker-secrets.sh
+chmod +x docker-secrets.sh
+./docker-secrets.sh
+```
+
 Copy the SSL keystore file into the `code` directory  
 The keystore is accessed on the classpath and the application does not need to be rebuilt
 ```
