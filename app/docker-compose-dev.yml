@@ -10,7 +10,7 @@ services:
       - common
     volumes:
       - "~/dev/docker/projects/user-rest/volumes/code/user-rest-0.0.1-SNAPSHOT.jar:/tmp/user-rest/user-rest.jar"
-      - "~/dev/docker/projects/user-rest/volumes/code/thalasoft.keystore:/tmp/user-rest/thalasoft.keystore"
+#      - "~/dev/docker/projects/user-rest/volumes/code/thalasoft.keystore:/tmp/user-rest/thalasoft.keystore"
       - "~/dev/docker/projects/common/volumes/logs:/tmp/user-rest/logs"
     environment:
       HOST_USER_ID: ${CURRENT_UID}
@@ -30,7 +30,8 @@ services:
         max_attempts: 3 
         window: 10s
     healthcheck:
-      test: curl --fail --insecure https://localhost:8443/api/ || exit 1
+#      test: curl --fail --insecure https://localhost:8443/api/ || exit 1
+      test: curl --fail --insecure http://localhost:8443/api/ || exit 1
       interval: 30s
       timeout: 10s
       retries: 3  
