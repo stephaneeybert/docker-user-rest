@@ -7,7 +7,6 @@ docker push localhost:5000/user-rest-mysql
 docker tag stephaneeybert/user-rest-mysql thalasoft.com:5000/user-rest-mysql
 #docker push thalasoft.com:5000/user-rest-mysql
 fi
-#!/bin/bash
 
 docker build -t stephaneeybert/user-rest-postgresql --rm=true postgresql/
 if [ $? -eq 0 ]; then
