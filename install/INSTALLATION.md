@@ -1,13 +1,19 @@
 Installation
 
-On the remote
+On the local
+
+Build the images
+```
+cd ~/dev/docker/projects/user-rest/install;
+./build.sh;
+cd ~/dev/docker/projects/user-rest/app;
+./build.sh;
+```
 
 Create some directories
 ```
 mkdir -p ~/dev/docker/projects/user-rest/volumes/code/
 ```
-
-On the local
 
 Build the jar file
 ```
@@ -19,14 +25,6 @@ Copy the jar file
 ```
 cp ~/dev/java/projects/user-rest/target/user-rest-0.0.1-SNAPSHOT.jar ~/dev/docker/projects/user-rest/volumes/code/
 scp ~/dev/java/projects/user-rest/target/user-rest-0.0.1-SNAPSHOT.jar stephane@thalasoft.com:~/dev/docker/projects/user-rest/volumes/code/
-```
-
-Build the images
-```
-cd ~/dev/docker/projects/user-rest/install;
-./build.sh;
-cd ~/dev/docker/projects/user-rest/app;
-./build.sh;
 ```
 
 Copy some files
@@ -53,7 +51,26 @@ scp ~/.ssh/thalasoft.keystore stephane@thalasoft.com:~/dev/docker/projects/user-
 scp ~/.ssh/user-rest.keystore stephane@thalasoft.com:~/dev/docker/projects/user-rest/volumes/code/
 ```
 
+Install the database
+```
+cd ~/dev/docker/projects/user-rest/install
+docker stack deploy --compose-file docker-compose-dev.yml user-rest-install
+docker stack rm user-rest-install
+```
+
+View the completion of the installation
+The command should display an Exit 0 state or a Complete value for the container
+```
+docker stack ps user-rest-install
+docker stack rm user-rest-install
+```
+
 On the remote
+
+Create some directories
+```
+mkdir -p ~/dev/docker/projects/user-rest/volumes/code/
+```
 
 Open some ports on the firewall
 
@@ -73,13 +90,6 @@ Install the database
 ```
 cd ~/dev/docker/projects/user-rest/install
 docker stack deploy --compose-file docker-compose.yml user-rest-install
-docker stack rm user-rest-install
-```
-
-View the completion of the installation
-The command should display an Exit 0 state or a Complete value for the container
-```
-docker stack ps user-rest-install
 docker stack rm user-rest-install
 ```
 
