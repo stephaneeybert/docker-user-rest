@@ -10,8 +10,8 @@ services:
       - common
     volumes:
       - "~/dev/docker/projects/user-rest/volumes/code/user-rest-0.0.1-SNAPSHOT.jar:/tmp/user-rest/user-rest.jar"
+      - "~/dev/docker/projects/common/volumes/logs:/usr/local/user-rest/logs"
       - "~/dev/docker/projects/user-rest/volumes/code/thalasoft.keystore:/tmp/user-rest/thalasoft.keystore"
-      - "~/dev/docker/projects/common/volumes/logs:/tmp/user-rest/logs"
     environment:
       HOST_USER_ID: ${CURRENT_UID}
       HOST_GROUP_ID: ${CURRENT_GID}      
