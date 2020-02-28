@@ -10,7 +10,7 @@ docker stack deploy --compose-file docker-compose-dev.yml user-rest
 
 Access the API
 ```
-http://dev.musicng.thalasoft.com:8443/api/
+http://dev.thalasoft.com:8443/api/
 ```
 
 Stopping the swarm application
